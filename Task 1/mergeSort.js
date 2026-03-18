@@ -4,7 +4,7 @@
 * This function finds the middle of an array and recursively splits it until it hits the base case
 * The base case is arr length of 1
 * Once the base case is hit, it then merges back up.
-*/
+ */
 export default function sortArray(arr) {
     if (arr.length <= 1) {
         return arr;
@@ -21,7 +21,7 @@ export default function sortArray(arr) {
 * It starts off with two arrays of length 1 each, ie [73, 24] -> [[73], [24]]
 * The numbers inside are then compared, and the smallest value is pushed into the results array
 * This returns the sorted array, and the cycle repeats, until it outputs the full, sorted array
-*/
+ */
 function mergeArrays(left, right) {
     let result = [];
     let l = 0;
