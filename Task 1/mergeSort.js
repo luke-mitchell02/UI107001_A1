@@ -6,6 +6,12 @@
 * Once the base case is hit, it then merges back up.
  */
 export default function sortArray(arr) {
+    if (!Array.isArray(arr)) {
+        throw new TypeError("The input must be an array");
+    }
+    if (!arr.every(value => typeof value === "number" && !Number.isNaN(value))) {
+        throw new TypeError("The input must be an array of numbers");
+    }
     if (arr.length <= 1) {
         return arr;
     }
