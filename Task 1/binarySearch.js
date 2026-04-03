@@ -8,6 +8,24 @@ This function runs recursively until the index is found. If the index is not fou
  */
 
 export default function binarySearch(arr, target, start = 0, end = arr.length - 1) {
+    if (start === 0 && end === arr.length - 1) {
+        if (!Array.isArray(arr)) {
+            throw new TypeError("The input must be an array");
+        }
+        if (arr.length > 0) {
+            const type = typeof arr[0];
+            if (type !== "number" && type !== "string") {
+                throw new TypeError("The input must be an array of numbers or strings");
+            }
+            if (!arr.every(value => typeof value === type)) {
+                throw new TypeError("The input must be an array of the same type");
+            }
+            if (typeof target !== type) {
+                throw new TypeError("The target must be the same type as the array elements");
+            }
+        }
+    }
+
     if (start > end) {
         return -1;
     }

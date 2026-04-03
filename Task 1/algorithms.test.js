@@ -153,16 +153,16 @@ describe('Binary Search', () => {
     });
 
     // Test Case 7
-    test('Returns -1 when the array provided does not contain only numbers', () => {
-        expect(binarySearch(["Hello World", 42], 42)).toBe(-1);
+    test('Throws an error when the array contains mixed types', () => {
+        expect(() => binarySearch(["Hello World", 42], 42)).toThrow("The input must be an array of the same type");
     });
 
     // Test Case 8
-    test('Returns -1 when the target provided is not a number', () => {
-        expect(binarySearch([42], null)).toBe(-1);
-        expect(binarySearch([42], undefined)).toBe(-1);
-        expect(binarySearch([42], true)).toBe(-1);
-        expect(binarySearch([42], "Hello world")).toBe(-1);
+    test('Throws an error when the target type does not match the array element type', () => {
+        expect(() => binarySearch([42], null)).toThrow("The target must be the same type as the array elements");
+        expect(() => binarySearch([42], undefined)).toThrow("The target must be the same type as the array elements");
+        expect(() => binarySearch([42], true)).toThrow("The target must be the same type as the array elements");
+        expect(() => binarySearch([42], "Hello world")).toThrow("The target must be the same type as the array elements");
     });
 
     // Test Case 9
