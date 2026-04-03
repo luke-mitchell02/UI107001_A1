@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/.bin/jest"
+    "test": "npx --node-options=--experimental-vm-modules jest"
   },
   "devDependencies": {
     "jest": "^29.0.0"

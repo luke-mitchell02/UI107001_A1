@@ -60,10 +60,10 @@ describe('Merge Sort Unit Test', () => {
     });
 
     // Test Case 6
-    test('Throws an error when the array contains non-number values', () => {
+    test('Throws an error when the array contains mixed types', () => {
         expect(() => {
-            sortArray(["Hello world", "I am a string", 1, 4, 9, 2, 8, 3.14, true]);
-        }).toThrow("The input must be an array of numbers");
+            sortArray(["Hello world", 1, 4, 9, 2, 8, 3.14, true]);
+        }).toThrow("The input must be an array of the same type");
     });
 
     // Test Case 7
@@ -76,6 +76,40 @@ describe('Merge Sort Unit Test', () => {
     // Test Case 8
     test('Sorts a large dataset of 101 elements', () => {
         expect(sortArray(largeUnsorted)).toEqual(largeSorted);
+    });
+
+    // Test Case 9
+    test('Sorts an array of strings into alphabetical order', () => {
+        expect(sortArray(['banana', 'apple', 'cherry', 'date'])).toEqual(['apple', 'banana', 'cherry', 'date']);
+    });
+
+    // Test Case 10
+    test('Sorts a single-element string array unchanged', () => {
+        expect(sortArray(['only'])).toEqual(['only']);
+    });
+
+    // Test Case 11
+    test('Sorts a string array with duplicate values', () => {
+        expect(sortArray(['banana', 'apple', 'banana', 'cherry'])).toEqual(['apple', 'banana', 'banana', 'cherry']);
+    });
+
+    // Test Case 12
+    test('Sorts strings with uppercase correctly — uppercase sorts before lowercase in Unicode', () => {
+        expect(sortArray(['banana', 'Apple', 'cherry'])).toEqual(['Apple', 'banana', 'cherry']);
+    });
+
+    // Test Case 13
+    test('Throws an error when the array contains booleans (not a supported type)', () => {
+        expect(() => {
+            sortArray([true, false, true]);
+        }).toThrow("The input must be an array of numbers or strings");
+    });
+
+    // Test Case 14
+    test('Throws an error when the array contains null (not a supported type)', () => {
+        expect(() => {
+            sortArray([null, null]);
+        }).toThrow("The input must be an array of numbers or strings");
     });
 });
 
