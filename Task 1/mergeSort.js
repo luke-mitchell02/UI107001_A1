@@ -9,11 +9,15 @@ export default function sortArray(arr) {
     if (!Array.isArray(arr)) {
         throw new TypeError("The input must be an array");
     }
-    if (!arr.every(value => typeof value === "number" && !Number.isNaN(value))) {
-        throw new TypeError("The input must be an array of numbers");
-    }
     if (arr.length <= 1) {
         return arr;
+    }
+    const type = typeof arr[0];
+    if (type !== "number" && type !== "string") {
+        throw new TypeError("The input must be an array of numbers or strings");
+    }
+    if (!arr.every(value => typeof value === type && (type !== "number" || !Number.isNaN(value)))) {
+        throw new TypeError("The input must be an array of the same type");
     }
 
     let middleOfArray = Math.floor(arr.length / 2);
